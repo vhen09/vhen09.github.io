@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raven Mondia | Portfolio</title>
+  <meta
+    name="description"
+    content="Portfolio of Raven Mondia showcasing web development, AI automation, and software projects."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1020;
+      color: #f5f7fb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #cbd5e1;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    .hero-content {
+      max-width: 780px;
+    }
+
+    .eyebrow {
+      color: #8ab4ff;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid #334155;
+    }
+
+    .btn-primary {
+      background: #f8fafc;
+      color: #0b1020;
+    }
+
+    .btn-secondary {
+      color: #f8fafc;
+    }
+
+    section {
+      padding: 85px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      color: #aab7c7;
+      max-width: 700px;
+      margin-bottom: 35px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #111827;
+      border: 1px solid #253044;
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: #aeb9c8;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer {
+      padding: 35px 0;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 72vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <nav>
+      <div class="logo">Raven Mondia</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Software Development • AI Automation • Web Development</div>
+
+          <h1>I build practical digital solutions.</h1>
+
+          <p>
+            I'm Raven Mondia, a Computer Science graduate with hands-on experience
+            building web applications, automation workflows, database-driven systems,
+            and AI-assisted solutions.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#projects">View My Projects</a>
+            <a class="btn btn-secondary" href="https://github.com/vhen09" target="_blank">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+
+        <p class="section-intro">
+          I enjoy turning real-world problems into functional digital solutions.
+          My project experience includes web development, database management,
+          workflow automation, API integrations, and AI-assisted development.
+          I am continuously improving my technical skills while focusing on
+          practical, maintainable, and user-friendly solutions.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>Featured Projects</h2>
+
+        <p class="section-intro">
+          A selection of projects that demonstrate my problem-solving,
+          development, and automation experience.
+        </p>
+
+        <div class="project-grid">
+
+          <article class="card">
+            <h3>Interfarma Fleet Management System</h3>
+            <p>
+              A web-based vehicle inventory and maintenance tracking system designed
+              to improve the management of vehicle records, maintenance schedules,
+              and related information.
+            </p>
+
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Bootstrap</span>
+              <span class="tag">XAMPP</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>AXIO Thesis Project</h3>
+            <p>
+              A web-based academic project exploring a hybrid frontend architecture
+              and AI-assisted functionality for supporting mathematical and
+              technical learning.
+            </p>
+
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">API Integration</span>
+              <span class="tag">AI</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Multi-Label Gmail Automation</h3>
+            <p>
+              An n8n workflow that processes labeled Gmail messages and organizes
+              relevant information using Google Sheets and Google Drive.
+            </p>
+
+            <div class="tags">
+              <span class="tag">n8n</span>
+              <span class="tag">Gmail</span>
+              <span class="tag">Google Sheets</span>
+              <span class="tag">Google Drive</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>AI Receipt Processing Workflow</h3>
+            <p>
+              An automation workflow designed to receive receipt images through
+              Telegram, extract structured information with AI, and organize the
+              results in Google Sheets and Google Drive.
+            </p>
+
+            <div class="tags">
+              <span class="tag">n8n</span>
+              <span class="tag">Telegram</span>
+              <span class="tag">Gemini</span>
+              <span class="tag">Automation</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2>Skills & Tools</h2>
+
+        <div class="skills">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Bootstrap</span>
+          <span class="tag">n8n</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">AI Tools</span>
+          <span class="tag">Google Workspace</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Let's Connect</h2>
+
+        <p class="section-intro">
+          I'm open to opportunities where I can contribute, learn, and continue
+          building practical software and automation solutions.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://github.com/vhen09" target="_blank">
+            View GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Raven Mondia. Built with HTML and CSS.
+    </div>
+  </footer>
+</body>
+</html>
