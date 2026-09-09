@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Portfolio of Raven Mondia, a software developer building practical web applications, AI automations, and database-driven systems.">
+  <meta name="author" content="Raven Mondia">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Raven Mondia | Software developer">
+  <meta property="og:description" content="Practical software, thoughtful interfaces, and useful automation.">
+  <meta property="og:url" content="https://vhen09.github.io/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://vhen09.github.io/">
+  <title>Raven Mondia | Software developer</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --bg-deep: #050b14;
+      --surface: rgba(16, 32, 51, .72);
+      --surface-solid: #102033;
+      --surface-raised: #142a41;
+      --line: rgba(157, 190, 218, .18);
+      --text: #eef6ff;
+      --muted: #a9bbce;
+      --faint: #72889e;
+      --accent: #78e6c0;
+      --accent-strong: #45cda1;
+      --accent-wash: rgba(120, 230, 192, .11);
+      --warm: #f5c77a;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .22);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 85% 5%, rgba(53, 122, 137, .22), transparent 30rem),
+        radial-gradient(circle at 5% 30%, rgba(35, 89, 113, .18), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { color: var(--bg); background: var(--accent); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed;
+      z-index: 20;
+      top: 1rem;
+      left: 1rem;
+      padding: .65rem 1rem;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--bg-deep);
+      font-weight: 800;
+      transform: translateY(-160%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .container { width: min(var(--max), calc(100% - 3rem)); margin-inline: auto; }
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid transparent;
+      background: rgba(7, 17, 31, .72);
+      backdrop-filter: blur(18px);
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .site-header.scrolled { border-color: var(--line); background: rgba(7, 17, 31, .92); }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .logo-mark {
+      display: grid;
+      width: 2.25rem;
+      height: 2.25rem;
+      place-items: center;
+      border: 1px solid rgba(120, 230, 192, .35);
+      border-radius: 10px;
+      background: var(--accent-wash);
+      color: var(--accent);
+      font-size: .8rem;
+      letter-spacing: .05em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; color: var(--muted); font-size: .9rem; }
+    .nav-links a { padding: .55rem 0; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .nav-toggle { display: none; border: 1px solid var(--line); border-radius: 10px; padding: .5rem; background: transparent; color: var(--text); cursor: pointer; }
+    .nav-toggle svg { display: block; width: 1.35rem; height: 1.35rem; }
+    .hero { position: relative; padding: clamp(6.5rem, 13vw, 10rem) 0 7rem; overflow: hidden; }
+    .hero::before {
+      position: absolute;
+      top: 4rem;
+      right: -8rem;
+      width: 28rem;
+      height: 28rem;
+      border: 1px solid rgba(120, 230, 192, .1);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 4rem rgba(120, 230, 192, .025), 0 0 0 8rem rgba(120, 230, 192, .02);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); align-items: end; gap: 4rem; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .65rem; color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow::before { width: 2rem; height: 1px; background: var(--accent); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.12; letter-spacing: -.045em; }
+    h1 { max-width: 800px; margin-bottom: 1.6rem; font-size: clamp(3.5rem, 8vw, 7.25rem); font-weight: 800; }
+    .accent { color: var(--accent); }
+    .hero-copy { max-width: 670px; margin-bottom: 2.2rem; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+    .buttons { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 3rem;
+      padding: .7rem 1.15rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: .92rem;
+      font-weight: 800;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: var(--accent); }
+    .button-primary { background: var(--accent); border-color: var(--accent); color: var(--bg-deep); }
+    .button-primary:hover, .button-primary:focus-visible { background: #9af2d3; border-color: #9af2d3; }
+    .button-quiet { color: var(--muted); }
+    .hero-aside { align-self: end; padding-left: 2rem; border-left: 1px solid var(--line); }
+    .hero-aside p { color: var(--muted); font-size: .92rem; }
+    .status { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.3rem; color: var(--text); font-size: .9rem; font-weight: 700; }
+    .status::before { width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 .3rem rgba(120, 230, 192, .12); content: ""; }
+    .scroll-hint { display: flex; align-items: center; gap: .7rem; margin-top: 5rem; color: var(--faint); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+    .scroll-hint::after { width: 3.5rem; height: 1px; background: var(--line); content: ""; }
+    section { padding: 7rem 0; border-top: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; margin-bottom: 3rem; }
+    .section-kicker { color: var(--accent); font-size: .77rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-size: clamp(2.25rem, 5vw, 4rem); }
+    .section-intro { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 1.08rem; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; }
+    .about-grid p { color: var(--muted); }
+    .principles { display: grid; gap: 1rem; }
+    .principle { padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .principle strong { display: block; margin-bottom: .2rem; font-size: .95rem; }
+    .principle span { color: var(--faint); font-size: .86rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .project-card { position: relative; display: flex; min-height: 100%; flex-direction: column; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(20, 42, 65, .86), rgba(11, 25, 41, .7)); overflow: hidden; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .project-card::after { position: absolute; right: -3rem; bottom: -4rem; width: 11rem; height: 11rem; border: 1px solid rgba(120, 230, 192, .09); border-radius: 50%; content: ""; pointer-events: none; }
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(120, 230, 192, .5); box-shadow: var(--shadow); }
+    .project-media { display: grid; min-height: 190px; margin-bottom: 1.45rem; place-items: center; border: 1px solid rgba(120, 230, 192, .18); border-radius: calc(var(--radius) - 8px); background: linear-gradient(135deg, rgba(120, 230, 192, .12), rgba(7, 17, 31, .55)); color: var(--faint); text-align: center; }
+    .project-media img { display: block; width: 100%; height: 100%; min-height: 190px; max-height: 280px; border-radius: calc(var(--radius) - 8px); object-fit: cover; }
+    .project-gallery { display: grid; width: 100%; height: 280px; grid-template-columns: repeat(2, 1fr); grid-template-rows: 1.55fr 1fr; gap: .35rem; overflow: hidden; border-radius: calc(var(--radius) - 8px); }
+    .project-gallery img { width: 100%; height: 100%; min-height: 0; max-height: none; border-radius: 0; object-fit: cover; }
+    .project-gallery img:first-child { grid-column: 1 / -1; }
+    .project-media span { max-width: 15rem; padding: 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .project-content { display: flex; flex: 1; flex-direction: column; padding: 0 .6rem .6rem; }
+    .project-number { margin-bottom: .8rem; color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+    .project-card h3 { max-width: 400px; margin-bottom: .35rem; font-size: 1.45rem; }
+    .project-category { margin-bottom: .8rem; color: var(--warm); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .project-card p { max-width: 470px; margin-bottom: 1.4rem; color: var(--muted); font-size: .93rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; }
+    .tag { padding: .32rem .65rem; border: 1px solid rgba(120, 230, 192, .18); border-radius: 999px; background: var(--accent-wash); color: #c5f7e4; font-size: .73rem; font-weight: 700; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
+    .project-actions .button { min-height: 2.6rem; padding: .55rem .85rem; font-size: .8rem; }
+    .project-modal { position: fixed; z-index: 30; inset: 0; display: grid; padding: 1.5rem; place-items: center; background: rgba(3, 9, 17, .84); }
+    .project-modal[hidden] { display: none; }
+    .project-modal-content { position: relative; width: min(980px, 100%); max-height: min(90vh, 820px); padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-solid); box-shadow: var(--shadow); overflow: auto; }
+    .project-modal-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .project-modal-header h3 { margin-bottom: .25rem; font-size: clamp(1.35rem, 3vw, 2rem); }
+    .project-modal-header p { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+    .project-modal-close { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--text); cursor: pointer; font-size: 1.35rem; }
+    .project-modal-close:hover, .project-modal-close:focus-visible { border-color: var(--accent); color: var(--accent); }
+    .project-modal-main { display: block; width: 100%; max-height: 62vh; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-deep); object-fit: contain; }
+    .project-modal-caption { margin: .75rem 0 1rem; color: var(--muted); font-size: .84rem; }
+    .project-modal-thumbnails { display: grid; grid-template-columns: repeat(5, 1fr); gap: .55rem; }
+    .project-modal-thumbnails button { padding: .2rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-deep); cursor: pointer; }
+    .project-modal-thumbnails button:hover, .project-modal-thumbnails button:focus-visible, .project-modal-thumbnails button.active { border-color: var(--accent); }
+    .project-modal-thumbnails img { display: block; width: 100%; height: 4.5rem; border-radius: 7px; object-fit: cover; }
+    .code-modal-copy { margin-bottom: 1rem; color: var(--muted); font-size: .9rem; }
+    .code-preview { margin: 0; padding: 1.1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-deep); color: #d8f7ed; font: .78rem/1.65 "SFMono-Regular", Consolas, "Liberation Mono", monospace; overflow: auto; white-space: pre-wrap; }
+    .skills-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 4rem; align-items: start; }
+    .skills { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .skill { padding: .6rem .85rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--muted); font-size: .87rem; }
+    .contact { position: relative; overflow: hidden; }
+    .contact-box { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: clamp(2rem, 5vw, 4rem); border: 1px solid rgba(120, 230, 192, .25); border-radius: var(--radius); background: linear-gradient(120deg, rgba(120, 230, 192, .1), rgba(16, 32, 51, .8)); }
+    .contact-box h2 { max-width: 650px; margin-bottom: 1rem; }
+    .contact-box p { max-width: 580px; margin-bottom: 0; color: var(--muted); }
+    .contact-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; max-width: 560px; margin-top: 1.6rem; }
+    .contact-item { display: flex; min-height: 4.3rem; flex-direction: column; justify-content: center; padding: .75rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(7, 17, 31, .2); }
+    .contact-label { margin-bottom: .2rem; color: var(--accent); font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .contact-item a { color: var(--text); font-size: .92rem; font-weight: 700; transition: color .2s ease; }
+    .contact-item a:hover, .contact-item a:focus-visible { color: var(--accent); }
+    footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--faint); font-size: .82rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-link { color: var(--muted); }
+    .footer-link:hover, .footer-link:focus-visible { color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    [data-reveal].visible { opacity: 1; transform: none; }
+    @media (max-width: 800px) {
+      .nav-toggle { display: block; }
+      .nav-links { position: absolute; top: calc(100% + 1px); right: 1.5rem; left: 1.5rem; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: .65rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(12, 28, 45, .98); box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .8rem; }
+      .hero-grid, .about-grid, .skills-layout, .section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero-aside { padding: 1.5rem 0 0; border-top: 1px solid var(--line); border-left: 0; }
+      .section-heading { margin-bottom: 2rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      .contact-box { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(var(--max), calc(100% - 2rem)); }
+      .nav-links { right: 1rem; left: 1rem; }
+      .hero { padding-top: 5rem; }
+      h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
+      section { padding: 5rem 0; }
+      .project-card { min-height: 0; }
+      .contact-details { grid-template-columns: 1fr; }
+      .project-modal { padding: .75rem; }
+      .project-modal-content { padding: 1rem; }
+      .project-modal-thumbnails { grid-template-columns: repeat(3, 1fr); }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Raven Mondia",
+    "url": "https://vhen09.github.io/",
+    "sameAs": ["https://github.com/vhen09"],
+    "jobTitle": "Software Developer",
+    "knowsAbout": ["Web development", "AI automation", "JavaScript", "PHP", "MySQL"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="logo" href="#top" aria-label="Raven Mondia home">
+        <span class="logo-mark" aria-hidden="true">RM</span>
+        <span>Raven Mondia</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="nav-links" id="primary-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">Software development · AI automation</div>
+          <h1>Useful ideas, <span class="accent">built well.</span></h1>
+          <p class="hero-copy">I'm Raven Mondia, a Computer Science graduate creating practical web applications, automation workflows, and AI-assisted solutions that make everyday work simpler.</p>
+          <div class="buttons">
+            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="https://github.com/vhen09" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="scroll-hint" aria-hidden="true">Scroll to explore</div>
+        </div>
+        <aside class="hero-aside" data-reveal>
+          <div class="status">Open to opportunities</div>
+          <p>I'm looking for teams where I can contribute, keep learning, and turn real-world problems into maintainable digital products.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div class="section-kicker">01 / About</div>
+          <div><h2>Curious by nature.<br><span class="accent">Practical by default.</span></h2></div>
+        </div>
+        <div class="about-grid">
+          <div data-reveal>
+            <p class="section-intro">I enjoy turning real-world problems into functional digital solutions. My project experience spans web development, database management, workflow automation, API integrations, and AI-assisted development.</p>
+            <p>Whether I'm shaping an interface or connecting a multi-step workflow, I care about clear structure, useful outcomes, and a thoughtful experience for the people using it.</p>
+          </div>
+          <div class="principles" data-reveal>
+            <div class="principle"><strong>Make it useful</strong><span>Start with the problem, not the technology.</span></div>
+            <div class="principle"><strong>Keep it clear</strong><span>Build systems people can understand and maintain.</span></div>
+            <div class="principle"><strong>Stay curious</strong><span>Learn continuously and iterate with intention.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div class="section-kicker">02 / Selected work</div>
+          <div><h2>Projects with a<br><span class="accent">purpose.</span></h2><p class="section-intro">A selection of projects demonstrating my problem-solving, development, and automation experience.</p></div>
+        </div>
+        <div class="project-grid">
+          <article class="project-card" data-reveal>
+            <div class="project-media"><img src="assets/interfarma-landing-hero.png" alt="Interfarma Nutraceuticals landing page hero section"></div>
+            <div class="project-content">
+              <div class="project-number">01 — WEB DEVELOPMENT</div>
+              <h3>Interfarma Nutraceuticals, Inc. Landing Page</h3>
+              <div class="project-category">Company Landing Page</div>
+              <p>A responsive company landing page developed for Interfarma Nutraceuticals, Inc. The website provides a clean and accessible digital presence while presenting relevant company information and content in a user-friendly interface.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span></div>
+              <div class="project-actions">
+                <!-- Replace with actual project URL -->
+                <button class="button button-primary" type="button" data-project-modal="landing">View Project <span aria-hidden="true">↗</span></button>
+                <!-- Replace with actual GitHub repository URL when available -->
+                <button class="button button-quiet" type="button" data-code-project="landing">View Code <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-reveal>
+            <div class="project-media"><img src="assets/axio-dashboard.png" alt="AXIO Unified Proof Workspace dashboard"></div>
+            <div class="project-content">
+              <div class="project-number">02 — THESIS</div>
+              <h3>AXIO</h3>
+              <div class="project-category">Thesis / Web Application</div>
+              <p>AXIO is an academic web application developed as part of my thesis project. It explores a hybrid frontend architecture using Vanilla JavaScript and React and incorporates API/AI-assisted functionality to support students working with mathematical and LaTeX-related content.</p>
+              <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">API Integration</span><span class="tag">AI</span></div>
+              <div class="project-actions">
+                <!-- Replace with actual project URL -->
+                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <!-- Replace with the appropriate AXIO GitHub repository URL -->
+                <button class="button button-quiet" type="button" data-code-project="axio">View Code <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-reveal>
+            <div class="project-media"><img src="assets/fleet-dashboard.png" alt="Interfarma Fleet Management dashboard"></div>
+            <div class="project-content">
+              <div class="project-number">03 — SYSTEMS</div>
+              <h3>Interfarma Fleet Management System</h3>
+              <div class="project-category">Web Application</div>
+              <p>A web-based vehicle inventory and maintenance tracking system designed to improve the management of vehicle records, maintenance schedules, and related information.</p>
+              <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span><span class="tag">XAMPP</span></div>
+              <div class="project-actions">
+                <!-- Replace with actual project URL -->
+                <button class="button button-primary" type="button" data-project-modal="fleet">View Project <span aria-hidden="true">↗</span></button>
+                <!-- Replace with actual GitHub repository URL when available -->
+                <button class="button button-quiet" type="button" data-code-project="fleet">View Code <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-reveal>
+            <div class="project-media"><img src="assets/multi-label-gmail-automation.png" alt="Multi-Label Gmail Automation n8n workflow"></div>
+            <div class="project-content">
+              <div class="project-number">04 — AUTOMATION</div>
+              <h3>Multi-Label Gmail Automation</h3>
+              <div class="project-category">Workflow Automation</div>
+              <p>An n8n workflow that processes labeled Gmail messages and organizes relevant information using Google Sheets and Google Drive.</p>
+              <div class="tags"><span class="tag">n8n</span><span class="tag">Gmail</span><span class="tag">Google Sheets</span><span class="tag">Google Drive</span></div>
+              <div class="project-actions">
+                <!-- Replace with actual project URL -->
+                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <!-- Replace with actual GitHub repository URL when available -->
+                <button class="button button-quiet" type="button" data-code-project="gmail">View Code <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" data-reveal>
+            <div class="project-media"><img src="assets/ai-receipt-processing-workflow.png" alt="AI Receipt Processing Workflow n8n automation"></div>
+            <div class="project-content">
+              <div class="project-number">05 — AI WORKFLOW</div>
+              <h3>AI Receipt Processing Workflow</h3>
+              <div class="project-category">AI Automation</div>
+              <p>An automation workflow that receives receipt images through Telegram, extracts structured information with AI, and organizes the results in Google Sheets and Google Drive.</p>
+              <div class="tags"><span class="tag">n8n</span><span class="tag">Telegram</span><span class="tag">Gemini</span><span class="tag">Automation</span></div>
+              <div class="project-actions">
+                <!-- Replace with actual project URL -->
+                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <!-- Replace with actual GitHub repository URL when available -->
+                <button class="button button-quiet" type="button" data-code-project="receipt">View Code <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-modal" id="fleet-project-modal" role="dialog" aria-modal="true" aria-labelledby="fleet-modal-title" hidden>
+     <div class="project-modal-content">
+       <div class="project-modal-header">
+         <div>
+           <div class="section-kicker">Interfarma Fleet Management System</div>
+           <h3 id="fleet-modal-title">Project screenshots</h3>
+           <p>Dashboard overview and supporting fleet management views.</p>
+         </div>
+         <button class="project-modal-close" type="button" aria-label="Close project screenshots">&times;</button>
+       </div>
+       <img class="project-modal-main" src="assets/fleet-dashboard.png" alt="Interfarma Fleet Management dashboard" data-modal-main>
+       <p class="project-modal-caption" data-modal-caption>Dashboard overview</p>
+       <div class="project-modal-thumbnails" aria-label="Choose a project screenshot">
+         <button class="active" type="button" aria-label="Show dashboard overview" data-modal-image="assets/fleet-dashboard.png" data-modal-alt="Interfarma Fleet Management dashboard" data-modal-caption="Dashboard overview"><img src="assets/fleet-dashboard.png" alt=""></button>
+         <button type="button" aria-label="Show maintenance reminders" data-modal-image="assets/fleet-reminders.png" data-modal-alt="Interfarma Fleet Management maintenance reminders" data-modal-caption="Maintenance reminders"><img src="assets/fleet-reminders.png" alt=""></button>
+         <button type="button" aria-label="Show visual charts" data-modal-image="assets/fleet-charts.png" data-modal-alt="Interfarma Fleet Management visual charts" data-modal-caption="Visual charts"><img src="assets/fleet-charts.png" alt=""></button>
+         <button type="button" aria-label="Show company vehicles" data-modal-image="assets/fleet-vehicles.png" data-modal-alt="Interfarma Fleet Management company vehicles page" data-modal-caption="Company vehicles"><img src="assets/fleet-vehicles.png" alt=""></button>
+         <button type="button" aria-label="Show vehicle list" data-modal-image="assets/fleet-vehicle-list.png" data-modal-alt="Interfarma Fleet Management vehicle list" data-modal-caption="Vehicle list"><img src="assets/fleet-vehicle-list.png" alt=""></button>
+       </div>
+     </div>
+    </div>
+    <div class="project-modal" id="landing-project-modal" role="dialog" aria-modal="true" aria-labelledby="landing-modal-title" hidden>
+     <div class="project-modal-content">
+       <div class="project-modal-header">
+         <div>
+           <div class="section-kicker">Interfarma Nutraceuticals, Inc. Landing Page</div>
+           <h3 id="landing-modal-title">Project screenshots</h3>
+           <p>Landing page hero and supporting company information views.</p>
+         </div>
+         <button class="project-modal-close" type="button" aria-label="Close landing page screenshots">&times;</button>
+       </div>
+       <img class="project-modal-main" src="assets/interfarma-landing-hero.png" alt="Interfarma Nutraceuticals landing page hero section" data-landing-main>
+       <p class="project-modal-caption" data-landing-caption>Landing page hero</p>
+       <div class="project-modal-thumbnails" aria-label="Choose a landing page screenshot">
+         <button class="active" type="button" aria-label="Show landing page hero" data-landing-image="assets/interfarma-landing-hero.png" data-landing-alt="Interfarma Nutraceuticals landing page hero section" data-landing-caption="Landing page hero"><img src="assets/interfarma-landing-hero.png" alt=""></button>
+         <button type="button" aria-label="Show landing page overview" data-landing-image="assets/interfarma-landing-overview.png" data-landing-alt="Interfarma Nutraceuticals landing page overview" data-landing-caption="Landing page overview"><img src="assets/interfarma-landing-overview.png" alt=""></button>
+         <button type="button" aria-label="Show company information section" data-landing-image="assets/interfarma-landing-about.png" data-landing-alt="Interfarma Nutraceuticals company information section" data-landing-caption="Company information section"><img src="assets/interfarma-landing-about.png" alt=""></button>
+       </div>
+     </div>
+    </div>
+    <div class="project-modal" id="code-project-modal" role="dialog" aria-modal="true" aria-labelledby="code-modal-title" hidden>
+     <div class="project-modal-content">
+       <div class="project-modal-header">
+         <div>
+           <div class="section-kicker">Code preview</div>
+           <h3 id="code-modal-title">Representative sample</h3>
+         </div>
+         <button class="project-modal-close" type="button" aria-label="Close code preview">&times;</button>
+       </div>
+       <p class="code-modal-copy">This is a focused sample of the project’s implementation—not the complete source repository.</p>
+       <pre class="code-preview"><code id="code-preview-content"></code></pre>
+     </div>
+    </div>
+
+    <section id="skills">
+      <div class="container skills-layout">
+        <div class="section-heading" data-reveal><div class="section-kicker">03 / Toolkit</div><div><h2>Tools for the<br><span class="accent">job at hand.</span></h2></div></div>
+        <div class="skills" data-reveal><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">PHP</span><span class="skill">MySQL</span><span class="skill">Bootstrap</span><span class="skill">n8n</span><span class="skill">REST APIs</span><span class="skill">GitHub</span><span class="skill">AI Tools</span><span class="skill">Google Workspace</span></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-box" data-reveal>
+          <div><div class="section-kicker">04 / Get in touch</div><h2>Have a problem worth <span class="accent">solving?</span></h2><p>I'm open to opportunities where I can contribute, learn, and continue building practical software and automation solutions.</p><div class="contact-details"><div class="contact-item"><span class="contact-label">Phone</span><a href="tel:+639296974664">+63 929 697 4664</a></div><div class="contact-item"><span class="contact-label">Facebook</span><a href="https://www.facebook.com/share/1SLhRJ5gXo/" target="_blank" rel="noreferrer">View Facebook profile ↗</a></div></div></div>
+          <a class="button button-primary" href="https://github.com/vhen09" target="_blank" rel="noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner"><span>© <span id="year">2026</span> Raven Mondia</span><a class="footer-link" href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script>
+    const header = document.querySelector(".site-header");
+    const toggle = document.querySelector(".nav-toggle");
+    const links = document.querySelector(".nav-links");
+    const year = document.querySelector("#year");
+
+    const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    toggle.addEventListener("click", () => {
+      const isOpen = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    links.addEventListener("click", (event) => {
+      if (event.target.matches("a")) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+      }
+    });
+
+    if (year) year.textContent = String(new Date().getFullYear());
+    const fleetModal = document.querySelector("#fleet-project-modal");
+    const fleetModalMain = fleetModal.querySelector("[data-modal-main]");
+    const fleetModalCaption = fleetModal.querySelector("[data-modal-caption]");
+    const fleetModalClose = fleetModal.querySelector(".project-modal-close");
+    const fleetModalTrigger = document.querySelector("[data-project-modal='fleet']");
+    const fleetModalThumbnails = fleetModal.querySelectorAll("[data-modal-image]");
+
+    const closeFleetModal = () => {
+      fleetModal.hidden = true;
+      document.body.style.overflow = "";
+      fleetModalTrigger.focus();
+    };
+
+    fleetModalTrigger.addEventListener("click", () => {
+      fleetModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      fleetModalClose.focus();
+    });
+    fleetModalClose.addEventListener("click", closeFleetModal);
+    fleetModal.addEventListener("click", (event) => {
+      if (event.target === fleetModal) closeFleetModal();
+    });
+    fleetModalThumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener("click", () => {
+        fleetModalMain.src = thumbnail.dataset.modalImage;
+        fleetModalMain.alt = thumbnail.dataset.modalAlt;
+        fleetModalCaption.textContent = thumbnail.dataset.modalCaption;
+        fleetModalThumbnails.forEach((item) => item.classList.remove("active"));
+        thumbnail.classList.add("active");
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !fleetModal.hidden) closeFleetModal();
+    });
+
+    const landingModal = document.querySelector("#landing-project-modal");
+    const landingModalMain = landingModal.querySelector("[data-landing-main]");
+    const landingModalCaption = landingModal.querySelector("[data-landing-caption]");
+    const landingModalClose = landingModal.querySelector(".project-modal-close");
+    const landingModalTrigger = document.querySelector("[data-project-modal='landing']");
+    const landingModalThumbnails = landingModal.querySelectorAll("[data-landing-image]");
+
+    const closeLandingModal = () => {
+      landingModal.hidden = true;
+      document.body.style.overflow = "";
+      landingModalTrigger.focus();
+    };
+
+    landingModalTrigger.addEventListener("click", () => {
+      landingModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      landingModalClose.focus();
+    });
+    landingModalClose.addEventListener("click", closeLandingModal);
+    landingModal.addEventListener("click", (event) => {
+      if (event.target === landingModal) closeLandingModal();
+    });
+    landingModalThumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener("click", () => {
+        landingModalMain.src = thumbnail.dataset.landingImage;
+        landingModalMain.alt = thumbnail.dataset.landingAlt;
+        landingModalCaption.textContent = thumbnail.dataset.landingCaption;
+        landingModalThumbnails.forEach((item) => item.classList.remove("active"));
+        thumbnail.classList.add("active");
+      });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !landingModal.hidden) closeLandingModal();
+    });
+
+    const codeModal = document.querySelector("#code-project-modal");
+    const codeModalTitle = document.querySelector("#code-modal-title");
+    const codePreview = document.querySelector("#code-preview-content");
+    const codeModalClose = codeModal.querySelector(".project-modal-close");
+    const codeButtons = document.querySelectorAll("[data-code-project]");
+    const codeSamples = {
+      landing: {
+        title: "Interfarma Landing Page — HTML sample",
+        code: `<section class="hero-section">
+  <p class="eyebrow">Committed to delivering value</p>
+  <h1>Smarter nutrition for <span>stronger animals.</span></h1>
+  <p>Your trusted partner for quality animal feeds and
+    nutraceutical solutions.</p>
+  <a class="button" href="#contact">Start a conversation</a>
+</section>`
+      },
+      axio: {
+        title: "AXIO — React component sample",
+        code: `function ProofStep({ statement, onVerify }) {
+  const [status, setStatus] = React.useState("Awaiting verification");
+
+  async function verifyStep() {
+    setStatus("Verifying...");
+    const result = await onVerify(statement);
+    setStatus(result.verified ? "Verified" : "Needs revision");
+  }
+
+  return (
+    <article className="proof-step">
+     <h3>Input theorem statement</h3>
+     <p>{statement}</p>
+     <button onClick={verifyStep}>Verify step</button>
+     <strong>{status}</strong>
+    </article>
+  );
+}`
+      },
+      fleet: {
+        title: "Interfarma Fleet Management — PHP sample",
+        code: `$stmt = $pdo->prepare(
+  "SELECT plate_number, model, department, pms_status
+   FROM vehicles
+   WHERE department = :department
+   ORDER BY plate_number"
+);
+
+$stmt->execute(["department" => $department]);
+$vehicles = $stmt->fetchAll(PDO::FETCH_ASSOC);`
+      },
+      gmail: {
+        title: "Multi-Label Gmail Automation — n8n sample",
+        code: `// Code node: normalize labeled Gmail messages
+return items.map(({ json: message }) => ({
+  json: {
+    messageId: message.id,
+    subject: message.subject ?? "(No subject)",
+    receivedAt: message.internalDate,
+    labels: message.labelIds ?? [],
+    driveFolder: "Gmail / " + (message.labelIds?.[0] ?? "Unlabeled")
+  }
+}));`
+      },
+      receipt: {
+        title: "AI Receipt Processing Workflow — n8n sample",
+        code: `// Code node: prepare structured receipt data
+const receipt = $json.aiResult;
+
+return [{
+  json: {
+    vendor: receipt.vendor,
+    receiptDate: receipt.date,
+    total: Number(receipt.total),
+    sourceFile: $json.fileName,
+    status: "ready for Google Sheets"
+  }
+}];`
+      }
+    };
+
+    let activeCodeTrigger = null;
+    const closeCodeModal = () => {
+      codeModal.hidden = true;
+      document.body.style.overflow = "";
+      if (activeCodeTrigger) activeCodeTrigger.focus();
+    };
+
+    codeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const sample = codeSamples[button.dataset.codeProject];
+        activeCodeTrigger = button;
+        codeModalTitle.textContent = sample.title;
+        codePreview.textContent = sample.code;
+        codeModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        codeModalClose.focus();
+      });
+    });
+    codeModalClose.addEventListener("click", closeCodeModal);
+    codeModal.addEventListener("click", (event) => {
+      if (event.target === codeModal) closeCodeModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !codeModal.hidden) closeCodeModal();
+    });
+
+    const revealItems = document.querySelectorAll("[data-reveal]");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, instance) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            instance.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
