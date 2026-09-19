@@ -27,6 +27,7 @@
       --muted: #a9bbce;
       --faint: #72889e;
       --accent: #78e6c0;
+      --accent-2: #9fd4ff;
       --accent-strong: #45cda1;
       --accent-wash: rgba(120, 230, 192, .11);
       --warm: #f5c77a;
@@ -48,6 +49,17 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      position: fixed;
+      inset: auto auto 7rem -6rem;
+      width: 22rem;
+      height: 22rem;
+      border-radius: 50%;
+      background: rgba(159, 212, 255, .08);
+      filter: blur(32px);
+      content: "";
+      pointer-events: none;
     }
     ::selection { color: var(--bg); background: var(--accent); }
     a { color: inherit; text-decoration: none; }
@@ -147,10 +159,70 @@
     .button-primary { background: var(--accent); border-color: var(--accent); color: var(--bg-deep); }
     .button-primary:hover, .button-primary:focus-visible { background: #9af2d3; border-color: #9af2d3; }
     .button-quiet { color: var(--muted); }
-    .hero-aside { align-self: end; padding-left: 2rem; border-left: 1px solid var(--line); }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.8rem;
+    }
+    .hero-stat {
+      padding: 1rem .85rem;
+      border: 1px solid rgba(159, 212, 255, .18);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(18, 34, 53, .92), rgba(8, 17, 28, .9));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .03);
+    }
+    .hero-stat strong {
+      display: block;
+      margin-bottom: .2rem;
+      color: var(--text);
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+    .hero-stat span {
+      color: var(--muted);
+      font-size: .74rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .hero-aside {
+      align-self: end;
+      padding: 1.45rem 1.4rem;
+      border: 1px solid rgba(120, 230, 192, .18);
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(18, 34, 53, .9), rgba(9, 18, 29, .84));
+      box-shadow: 0 22px 40px rgba(0, 0, 0, .18);
+    }
     .hero-aside p { color: var(--muted); font-size: .92rem; }
     .status { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.3rem; color: var(--text); font-size: .9rem; font-weight: 700; }
     .status::before { width: .55rem; height: .55rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 .3rem rgba(120, 230, 192, .12); content: ""; }
+    .mini-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin: 1.1rem 0 1.3rem;
+    }
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .4rem .65rem;
+      border: 1px solid rgba(159, 212, 255, .2);
+      border-radius: 999px;
+      background: rgba(159, 212, 255, .06);
+      color: var(--text);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .mini-badge::before {
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: var(--accent-2);
+      content: "";
+    }
     .scroll-hint { display: flex; align-items: center; gap: .7rem; margin-top: 5rem; color: var(--faint); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
     .scroll-hint::after { width: 3.5rem; height: 1px; background: var(--line); content: ""; }
     section { padding: 7rem 0; border-top: 1px solid var(--line); }
@@ -299,11 +371,30 @@
             <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
             <a class="button button-quiet" href="https://github.com/vhen09" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           </div>
+          <div class="hero-stats" aria-label="Quick summary">
+            <div class="hero-stat">
+              <strong>3+</strong>
+              <span>Years learning</span>
+            </div>
+            <div class="hero-stat">
+              <strong>10+</strong>
+              <span>Tools used</span>
+            </div>
+            <div class="hero-stat">
+              <strong>100%</strong>
+              <span>Driven</span>
+            </div>
+          </div>
           <div class="scroll-hint" aria-hidden="true">Scroll to explore</div>
         </div>
         <aside class="hero-aside" data-reveal>
           <div class="status">Open to opportunities</div>
           <p>IT Programmer and junior software developer based in Malolos, Bulacan, with availability for opportunities in Manila. I’m looking for teams where I can contribute, keep learning, and build reliable business software.</p>
+          <div class="mini-badges" aria-label="Key strengths">
+            <span class="mini-badge">Web apps</span>
+            <span class="mini-badge">Automation</span>
+            <span class="mini-badge">Databases</span>
+          </div>
         </aside>
       </div>
     </section>
@@ -400,7 +491,7 @@
               <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">API Integration</span><span class="tag">AI</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <button class="button button-primary" type="button" data-project-preview="axio" data-preview-title="AXIO" data-preview-image="assets/axio-dashboard.png" data-preview-alt="AXIO Unified Proof Workspace dashboard">View Project <span aria-hidden="true">↗</span></button>
                 <!-- Replace with the appropriate AXIO GitHub repository URL -->
                 <button class="button button-quiet" type="button" data-code-project="axio">View Code <span aria-hidden="true">↗</span></button>
               </div>
@@ -432,7 +523,7 @@
               <div class="tags"><span class="tag">n8n</span><span class="tag">Gmail</span><span class="tag">Google Sheets</span><span class="tag">Google Drive</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <button class="button button-primary" type="button" data-project-preview="gmail" data-preview-title="Multi-Label Gmail Automation" data-preview-image="assets/multi-label-gmail-automation.png" data-preview-alt="Multi-Label Gmail Automation n8n workflow">View Project <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
                 <button class="button button-quiet" type="button" data-code-project="gmail">View Code <span aria-hidden="true">↗</span></button>
               </div>
@@ -448,7 +539,7 @@
               <div class="tags"><span class="tag">n8n</span><span class="tag">Telegram</span><span class="tag">Gemini</span><span class="tag">Automation</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <a class="button button-primary" href="#">View Project <span aria-hidden="true">↗</span></a>
+                <button class="button button-primary" type="button" data-project-preview="receipt" data-preview-title="AI Receipt Processing Workflow" data-preview-image="assets/ai-receipt-processing-workflow.png" data-preview-alt="AI Receipt Processing Workflow n8n automation">View Project <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
                 <button class="button button-quiet" type="button" data-code-project="receipt">View Code <span aria-hidden="true">↗</span></button>
               </div>
@@ -509,6 +600,18 @@
        </div>
        <p class="code-modal-copy">This is a focused sample of the project’s implementation—not the complete source repository.</p>
        <pre class="code-preview"><code id="code-preview-content"></code></pre>
+     </div>
+    </div>
+    <div class="project-modal" id="preview-project-modal" role="dialog" aria-modal="true" aria-labelledby="preview-modal-title" hidden>
+     <div class="project-modal-content">
+       <div class="project-modal-header">
+         <div>
+           <div class="section-kicker">Project preview</div>
+           <h3 id="preview-modal-title">Project screenshots</h3>
+         </div>
+         <button class="project-modal-close" type="button" aria-label="Close project preview">&times;</button>
+       </div>
+       <img class="project-modal-main" id="preview-modal-image" src="" alt="">
      </div>
     </div>
 
@@ -730,6 +833,38 @@ return [{
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !codeModal.hidden) closeCodeModal();
+    });
+
+    const previewModal = document.querySelector("#preview-project-modal");
+    const previewModalTitle = document.querySelector("#preview-modal-title");
+    const previewModalImage = document.querySelector("#preview-modal-image");
+    const previewModalClose = previewModal.querySelector(".project-modal-close");
+    const previewButtons = document.querySelectorAll("[data-project-preview]");
+    let activePreviewTrigger = null;
+
+    const closePreviewModal = () => {
+      previewModal.hidden = true;
+      document.body.style.overflow = "";
+      if (activePreviewTrigger) activePreviewTrigger.focus();
+    };
+
+    previewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activePreviewTrigger = button;
+        previewModalTitle.textContent = button.dataset.previewTitle;
+        previewModalImage.src = button.dataset.previewImage;
+        previewModalImage.alt = button.dataset.previewAlt;
+        previewModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        previewModalClose.focus();
+      });
+    });
+    previewModalClose.addEventListener("click", closePreviewModal);
+    previewModal.addEventListener("click", (event) => {
+      if (event.target === previewModal) closePreviewModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !previewModal.hidden) closePreviewModal();
     });
 
     const revealItems = document.querySelectorAll("[data-reveal]");
