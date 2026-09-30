@@ -40,7 +40,6 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      min-width: 320px;
       background:
         radial-gradient(circle at 85% 5%, rgba(53, 122, 137, .22), transparent 30rem),
         radial-gradient(circle at 5% 30%, rgba(35, 89, 113, .18), transparent 34rem),
@@ -325,6 +324,236 @@
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       [data-reveal] { opacity: 1; transform: none; }
     }
+
+    /* Portfolio refresh */
+    html { scroll-padding-top: 5.5rem; }
+    body {
+      background:
+        radial-gradient(ellipse at 78% 8%, rgba(67, 151, 156, .16), transparent 33rem),
+        radial-gradient(ellipse at 10% 34%, rgba(53, 94, 139, .14), transparent 38rem),
+        linear-gradient(180deg, #07111f 0%, #091523 52%, #07111f 100%);
+    }
+    .site-header { border-bottom-color: rgba(157, 190, 218, .1); }
+    .nav { min-height: 72px; }
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      position: absolute;
+      right: 0;
+      bottom: .2rem;
+      left: 0;
+      height: 1px;
+      background: var(--accent);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+    .nav-toggle svg { transition: transform .2s ease; }
+    .nav-toggle[aria-expanded="true"] svg { transform: rotate(90deg); }
+    .hero { padding-top: clamp(5.5rem, 10vw, 8rem); }
+    .hero-grid { align-items: center; gap: clamp(2rem, 6vw, 5rem); }
+    .hero h1 { max-width: 760px; font-size: clamp(3rem, 4.4vw, 3.8rem); }
+    .hero-copy { max-width: 640px; }
+    .hero-aside {
+      align-self: center;
+      padding: 1.25rem;
+      border-color: rgba(159, 212, 255, .22);
+      background:
+        linear-gradient(145deg, rgba(20, 42, 65, .82), rgba(8, 19, 32, .84));
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .06);
+      backdrop-filter: blur(14px);
+    }
+    .hero-visual {
+      position: relative;
+      display: grid;
+      min-height: 240px;
+      margin-bottom: 1.25rem;
+      place-items: center;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid rgba(159, 212, 255, .14);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(120, 230, 192, .16), transparent 32%),
+        linear-gradient(135deg, rgba(9, 22, 37, .95), rgba(14, 35, 53, .72));
+    }
+    .hero-visual::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image: linear-gradient(rgba(159, 212, 255, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(159, 212, 255, .045) 1px, transparent 1px);
+      background-size: 25px 25px;
+      content: "";
+      mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+    }
+    .visual-orbit {
+      position: absolute;
+      width: 9rem;
+      height: 9rem;
+      border: 1px solid rgba(120, 230, 192, .26);
+      border-radius: 50%;
+      transform: rotateX(62deg) rotate(-28deg);
+    }
+    .visual-orbit::after {
+      position: absolute;
+      top: 50%;
+      right: -.22rem;
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(120, 230, 192, .85);
+      content: "";
+    }
+    .orbit-two { width: 12rem; height: 12rem; border-color: rgba(159, 212, 255, .2); transform: rotateX(62deg) rotate(42deg); }
+    .orbit-two::after { background: var(--accent-2); box-shadow: 0 0 18px rgba(159, 212, 255, .8); }
+    .visual-core {
+      display: grid;
+      width: 5rem;
+      height: 5rem;
+      place-items: center;
+      border: 1px solid rgba(120, 230, 192, .55);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(120, 230, 192, .22), rgba(12, 30, 45, .92));
+      box-shadow: 0 0 45px rgba(120, 230, 192, .18), inset 0 1px 0 rgba(255, 255, 255, .16);
+      color: var(--accent);
+      font: 800 1.35rem/1 "SFMono-Regular", Consolas, monospace;
+      transform: perspective(400px) rotateY(-12deg) rotateX(8deg);
+    }
+    .visual-chip {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .42rem .6rem;
+      border: 1px solid rgba(159, 212, 255, .2);
+      border-radius: 8px;
+      background: rgba(8, 19, 32, .86);
+      color: var(--text);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, .18);
+    }
+    .visual-chip span { color: var(--accent); font-family: "SFMono-Regular", Consolas, monospace; }
+    .chip-top { top: 1.15rem; right: 1rem; }
+    .chip-bottom { bottom: 1rem; left: .9rem; }
+    .visual-terminal {
+      position: absolute;
+      right: .9rem;
+      bottom: .9rem;
+      padding: .55rem .7rem;
+      border: 1px solid rgba(159, 212, 255, .16);
+      border-radius: 9px;
+      background: rgba(5, 11, 20, .78);
+      color: #b6c9da;
+      font: .62rem/1.6 "SFMono-Regular", Consolas, monospace;
+    }
+    .visual-terminal span { color: var(--accent); }
+    .hero-aside .status { margin-bottom: .85rem; }
+    .hero-aside p { margin-bottom: .8rem; }
+    .hero-stats { gap: .65rem; }
+    .hero-stat { border-color: rgba(159, 212, 255, .14); background: rgba(16, 32, 51, .62); }
+    .hero-stat strong { font-size: 1.15rem; }
+    .hero-stat span { font-size: .65rem; }
+    .hero-socials { display: flex; flex-wrap: wrap; gap: 1.15rem; margin-top: 1.1rem; }
+    .hero-socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 700;
+      transition: color .2s ease, transform .2s ease;
+    }
+    .hero-socials a::after { color: var(--accent); content: "↗"; font-size: .75rem; }
+    .hero-socials a:hover, .hero-socials a:focus-visible { color: var(--accent); transform: translateY(-1px); }
+    section { padding-block: clamp(5rem, 9vw, 7rem); scroll-margin-top: 4.5rem; }
+    .section-heading { margin-bottom: 2.5rem; }
+    .section-kicker { font-size: .72rem; }
+    .about-grid { gap: clamp(2rem, 5vw, 4rem); }
+    .principle, .experience-card {
+      border-color: rgba(157, 190, 218, .14);
+      background: linear-gradient(145deg, rgba(16, 32, 51, .76), rgba(9, 21, 35, .76));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    .principle:hover, .experience-card:hover { transform: translateY(-3px); border-color: rgba(120, 230, 192, .35); }
+    .experience-grid { gap: 1.1rem; }
+    .project-grid { gap: 1.2rem; }
+    .project-card {
+      padding: 1rem;
+      border-color: rgba(157, 190, 218, .14);
+      background: linear-gradient(145deg, rgba(18, 37, 57, .92), rgba(9, 20, 33, .92));
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .13), inset 0 1px 0 rgba(255, 255, 255, .035);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .project-card:hover { transform: perspective(1100px) translateY(-5px) rotateX(1deg); }
+    .project-media { margin-bottom: 1.2rem; background: #0b1725; overflow: hidden; }
+    .project-media img { transition: transform .45s ease; }
+    .project-card:hover .project-media img { transform: scale(1.025); }
+    .project-card h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); }
+    .project-card p { margin-bottom: .8rem; }
+    .project-contribution {
+      margin: 0 0 1rem;
+      padding-left: .7rem;
+      border-left: 2px solid rgba(120, 230, 192, .55);
+      color: #c4d5e4;
+      font-size: .82rem;
+    }
+    .project-contribution strong { color: var(--accent); }
+    .tag { background: rgba(120, 230, 192, .08); }
+    .button {
+      box-shadow: 0 5px 14px rgba(0, 0, 0, .12);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .button:hover, .button:focus-visible { box-shadow: 0 9px 22px rgba(0, 0, 0, .2); }
+    .button-primary { box-shadow: 0 8px 22px rgba(69, 205, 161, .15); }
+    .button-primary:hover, .button-primary:focus-visible { box-shadow: 0 10px 26px rgba(69, 205, 161, .24); }
+    .project-modal { z-index: 40; backdrop-filter: blur(8px); }
+    .project-modal-content { border-color: rgba(159, 212, 255, .24); }
+    .skills-layout { gap: clamp(2rem, 6vw, 5rem); }
+    .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+    .skill-group {
+      padding: 1rem;
+      border: 1px solid rgba(157, 190, 218, .14);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(16, 32, 51, .76), rgba(9, 21, 35, .76));
+    }
+    .skill-group h3 { margin-bottom: .8rem; color: var(--text); font-size: .9rem; letter-spacing: -.015em; }
+    .skill-group .skills { gap: .45rem; }
+    .skill { padding: .42rem .62rem; border-color: rgba(157, 190, 218, .14); background: rgba(5, 11, 20, .24); font-size: .78rem; }
+    .contact-box {
+      border-color: rgba(120, 230, 192, .2);
+      background:
+        radial-gradient(circle at 92% 0, rgba(120, 230, 192, .12), transparent 24rem),
+        linear-gradient(120deg, rgba(15, 43, 54, .78), rgba(16, 32, 51, .82));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .035);
+    }
+    .contact-item { background: rgba(5, 11, 20, .24); }
+    :target { scroll-margin-top: 5rem; }
+    @media (max-width: 800px) {
+      .hero { padding-bottom: 5rem; }
+      .hero-grid { gap: 2.5rem; }
+      .hero-aside { padding: 1.1rem; border: 1px solid rgba(159, 212, 255, .2); }
+      .skills-layout { gap: 1.5rem; }
+    }
+    @media (max-width: 520px) {
+      .hero { padding-top: 4.5rem; }
+      .hero h1 { font-size: clamp(2.65rem, 12vw, 3.35rem); }
+      .hero-visual { min-height: 215px; }
+      .visual-terminal { display: none; }
+      .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-stat { padding: .8rem .55rem; }
+      .hero-stat strong { font-size: 1rem; }
+      .hero-stat span { font-size: .58rem; }
+      .skill-groups { grid-template-columns: 1fr; }
+      .project-actions .button { flex: 1 1 auto; }
+      .contact-box { padding: 1.4rem; }
+      .nav-toggle { width: 2.75rem; height: 2.75rem; }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -365,29 +594,42 @@
       <div class="container hero-grid">
         <div data-reveal>
           <div class="eyebrow">IT programmer · Junior software developer</div>
-          <h1>Useful ideas, <span class="accent">built well.</span></h1>
-          <p class="hero-copy">I'm Raven Bryan Rosco Mondia, a Computer Science graduate with hands-on experience developing web applications, backend functionality, API integrations, and responsive digital solutions.</p>
+          <h1>Raven Mondia.<br><span class="accent">Software developer.</span></h1>
+          <p class="hero-copy">I'm Raven Bryan Rosco Mondia, a Computer Science graduate building practical web applications, backend functionality, API integrations, and responsive digital solutions.</p>
           <div class="buttons">
-            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
-            <a class="button button-quiet" href="https://github.com/vhen09" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button button-primary" href="#projects">View projects <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#contact">Contact me <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-socials" aria-label="Professional and contact links">
+            <a href="https://github.com/vhen09" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.facebook.com/share/1SLhRJ5gXo/" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="mailto:ravenmondia7@gmail.com">Email</a>
           </div>
           <div class="hero-stats" aria-label="Quick summary">
             <div class="hero-stat">
-              <strong>3+</strong>
-              <span>Years learning</span>
+              <strong>05</strong>
+              <span>Featured projects</span>
             </div>
             <div class="hero-stat">
-              <strong>10+</strong>
-              <span>Tools used</span>
+              <strong>03</strong>
+              <span>Core focus areas</span>
             </div>
             <div class="hero-stat">
-              <strong>100%</strong>
-              <span>Driven</span>
+              <strong>BS</strong>
+              <span>Math + CS</span>
             </div>
           </div>
           <div class="scroll-hint" aria-hidden="true">Scroll to explore</div>
         </div>
         <aside class="hero-aside" data-reveal>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="visual-orbit orbit-one"></div>
+            <div class="visual-orbit orbit-two"></div>
+            <div class="visual-core">&lt;/&gt;</div>
+            <div class="visual-chip chip-top"><span>01</span> BUILD WITH PURPOSE</div>
+            <div class="visual-chip chip-bottom"><span>AI</span> PRACTICAL AUTOMATION</div>
+            <div class="visual-terminal"><span>const</span> ideas = build();</div>
+          </div>
           <div class="status">Open to opportunities</div>
           <p>IT Programmer and junior software developer based in Malolos, Bulacan, with availability for opportunities in Manila. I’m looking for teams where I can contribute, keep learning, and build reliable business software.</p>
           <div class="mini-badges" aria-label="Key strengths">
@@ -466,82 +708,87 @@
         </div>
         <div class="project-grid">
           <article class="project-card" data-reveal>
-            <div class="project-media"><img src="assets/interfarma-landing-hero.png" alt="Interfarma Nutraceuticals landing page hero section"></div>
+            <div class="project-media"><img src="assets/interfarma-landing-hero.png" alt="Interfarma Nutraceuticals landing page hero section" loading="lazy" decoding="async"></div>
             <div class="project-content">
               <div class="project-number">01 — WEB DEVELOPMENT</div>
               <h3>Interfarma Nutraceuticals, Inc. Landing Page</h3>
               <div class="project-category">Company Landing Page</div>
               <p>A responsive company landing page developed for Interfarma Nutraceuticals, Inc. The website provides a clean and accessible digital presence while presenting relevant company information and content in a user-friendly interface.</p>
+              <p class="project-contribution"><strong>Contribution:</strong> Built a responsive company website and organized its content into a clear digital experience.</p>
               <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <button class="button button-primary" type="button" data-project-modal="landing">View Project <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="button" data-project-modal="landing">View screenshots <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
-                <button class="button button-quiet" type="button" data-code-project="landing">View Code <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" type="button" data-code-project="landing">View code sample <span aria-hidden="true">↗</span></button>
               </div>
             </div>
           </article>
           <article class="project-card" data-reveal>
-            <div class="project-media"><img src="assets/axio-dashboard.png" alt="AXIO Unified Proof Workspace dashboard"></div>
+            <div class="project-media"><img src="assets/axio-dashboard.png" alt="AXIO Unified Proof Workspace dashboard" loading="lazy" decoding="async"></div>
             <div class="project-content">
               <div class="project-number">02 — THESIS</div>
               <h3>AXIO</h3>
               <div class="project-category">Thesis / Web Application</div>
               <p>AXIO is an academic web application developed as part of my thesis project. It explores a hybrid frontend architecture using Vanilla JavaScript and React and incorporates API/AI-assisted functionality to support students working with mathematical and LaTeX-related content.</p>
+              <p class="project-contribution"><strong>Contribution:</strong> Led full-stack development and integrated AI-assisted mathematical explanations.</p>
               <div class="tags"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">API Integration</span><span class="tag">AI</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <button class="button button-primary" type="button" data-project-preview="axio" data-preview-title="AXIO" data-preview-image="assets/axio-dashboard.png" data-preview-alt="AXIO Unified Proof Workspace dashboard">View Project <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="button" data-project-preview="axio" data-preview-title="AXIO" data-preview-image="assets/axio-dashboard.png" data-preview-alt="AXIO Unified Proof Workspace dashboard">View preview <span aria-hidden="true">↗</span></button>
                 <!-- Replace with the appropriate AXIO GitHub repository URL -->
-                <button class="button button-quiet" type="button" data-code-project="axio">View Code <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" type="button" data-code-project="axio">View code sample <span aria-hidden="true">↗</span></button>
               </div>
             </div>
           </article>
           <article class="project-card" data-reveal>
-            <div class="project-media"><img src="assets/fleet-dashboard.png" alt="Interfarma Fleet Management dashboard"></div>
+            <div class="project-media"><img src="assets/fleet-dashboard.png" alt="Interfarma Fleet Management dashboard" loading="lazy" decoding="async"></div>
             <div class="project-content">
               <div class="project-number">03 — SYSTEMS</div>
               <h3>Interfarma Fleet Management System</h3>
               <div class="project-category">Web Application</div>
               <p>A web-based vehicle inventory and maintenance tracking system designed to improve the management of vehicle records, maintenance schedules, and related information.</p>
+              <p class="project-contribution"><strong>Contribution:</strong> Developed the fleet system and its responsive dashboard during my internship.</p>
               <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span><span class="tag">XAMPP</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <button class="button button-primary" type="button" data-project-modal="fleet">View Project <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="button" data-project-modal="fleet">View screenshots <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
-                <button class="button button-quiet" type="button" data-code-project="fleet">View Code <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" type="button" data-code-project="fleet">View code sample <span aria-hidden="true">↗</span></button>
               </div>
             </div>
           </article>
           <article class="project-card" data-reveal>
-            <div class="project-media"><img src="assets/multi-label-gmail-automation.png" alt="Multi-Label Gmail Automation n8n workflow"></div>
+            <div class="project-media"><img src="assets/multi-label-gmail-automation.png" alt="Multi-Label Gmail Automation n8n workflow" loading="lazy" decoding="async"></div>
             <div class="project-content">
               <div class="project-number">04 — AUTOMATION</div>
               <h3>Multi-Label Gmail Automation</h3>
               <div class="project-category">Workflow Automation</div>
               <p>An n8n workflow that processes labeled Gmail messages and organizes relevant information using Google Sheets and Google Drive.</p>
+              <p class="project-contribution"><strong>Contribution:</strong> Designed the message-processing and file-organization workflow.</p>
               <div class="tags"><span class="tag">n8n</span><span class="tag">Gmail</span><span class="tag">Google Sheets</span><span class="tag">Google Drive</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <button class="button button-primary" type="button" data-project-preview="gmail" data-preview-title="Multi-Label Gmail Automation" data-preview-image="assets/multi-label-gmail-automation.png" data-preview-alt="Multi-Label Gmail Automation n8n workflow">View Project <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="button" data-project-preview="gmail" data-preview-title="Multi-Label Gmail Automation" data-preview-image="assets/multi-label-gmail-automation.png" data-preview-alt="Multi-Label Gmail Automation n8n workflow">View preview <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
-                <button class="button button-quiet" type="button" data-code-project="gmail">View Code <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" type="button" data-code-project="gmail">View code sample <span aria-hidden="true">↗</span></button>
               </div>
             </div>
           </article>
           <article class="project-card" data-reveal>
-            <div class="project-media"><img src="assets/ai-receipt-processing-workflow.png" alt="AI Receipt Processing Workflow n8n automation"></div>
+            <div class="project-media"><img src="assets/ai-receipt-processing-workflow.png" alt="AI Receipt Processing Workflow n8n automation" loading="lazy" decoding="async"></div>
             <div class="project-content">
               <div class="project-number">05 — AI WORKFLOW</div>
               <h3>AI Receipt Processing Workflow</h3>
               <div class="project-category">AI Automation</div>
               <p>An automation workflow that receives receipt images through Telegram, extracts structured information with AI, and organizes the results in Google Sheets and Google Drive.</p>
+              <p class="project-contribution"><strong>Contribution:</strong> Created an AI-assisted receipt extraction and records workflow.</p>
               <div class="tags"><span class="tag">n8n</span><span class="tag">Telegram</span><span class="tag">Gemini</span><span class="tag">Automation</span></div>
               <div class="project-actions">
                 <!-- Replace with actual project URL -->
-                <button class="button button-primary" type="button" data-project-preview="receipt" data-preview-title="AI Receipt Processing Workflow" data-preview-image="assets/ai-receipt-processing-workflow.png" data-preview-alt="AI Receipt Processing Workflow n8n automation">View Project <span aria-hidden="true">↗</span></button>
+                <button class="button button-primary" type="button" data-project-preview="receipt" data-preview-title="AI Receipt Processing Workflow" data-preview-image="assets/ai-receipt-processing-workflow.png" data-preview-alt="AI Receipt Processing Workflow n8n automation">View preview <span aria-hidden="true">↗</span></button>
                 <!-- Replace with actual GitHub repository URL when available -->
-                <button class="button button-quiet" type="button" data-code-project="receipt">View Code <span aria-hidden="true">↗</span></button>
+                <button class="button button-quiet" type="button" data-code-project="receipt">View code sample <span aria-hidden="true">↗</span></button>
               </div>
             </div>
           </article>
@@ -618,7 +865,13 @@
     <section id="skills">
       <div class="container skills-layout">
         <div class="section-heading" data-reveal><div class="section-kicker">04 / Toolkit</div><div><h2>Tools for the<br><span class="accent">job at hand.</span></h2></div></div>
-        <div class="skills" data-reveal><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">PHP</span><span class="skill">MySQL</span><span class="skill">Bootstrap</span><span class="skill">n8n</span><span class="skill">REST APIs</span><span class="skill">GitHub</span><span class="skill">AI Tools</span><span class="skill">Google Workspace</span></div>
+        <div class="skill-groups" data-reveal>
+          <div class="skill-group"><h3>Frontend</h3><div class="skills"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">React</span><span class="skill">Bootstrap</span><span class="skill">Tailwind CSS</span></div></div>
+          <div class="skill-group"><h3>Backend</h3><div class="skills"><span class="skill">PHP</span><span class="skill">REST APIs</span></div></div>
+          <div class="skill-group"><h3>Database</h3><div class="skills"><span class="skill">MySQL</span></div></div>
+          <div class="skill-group"><h3>Tools</h3><div class="skills"><span class="skill">GitHub</span><span class="skill">XAMPP</span><span class="skill">Google Workspace</span></div></div>
+          <div class="skill-group"><h3>AI &amp; Automation</h3><div class="skills"><span class="skill">n8n</span><span class="skill">AI Tools</span><span class="skill">Gemini</span><span class="skill">DeepSeek API</span><span class="skill">Gmail</span><span class="skill">Google Sheets</span><span class="skill">Google Drive</span><span class="skill">Telegram</span></div></div>
+        </div>
       </div>
     </section>
 
@@ -652,7 +905,29 @@
       toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
     links.addEventListener("click", (event) => {
-      if (event.target.matches("a")) {
+      if (event.target instanceof Element && event.target.closest("a")) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (links.classList.contains("open") && event.target instanceof Node && !header.contains(event.target)) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && links.classList.contains("open")) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+        toggle.focus();
+      }
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 800 && links.classList.contains("open")) {
         links.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-label", "Open menu");
@@ -865,6 +1140,27 @@ return [{
     });
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && !previewModal.hidden) closePreviewModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab") return;
+      const activeModal = document.querySelector(".project-modal:not([hidden])");
+      if (!activeModal) return;
+      const focusable = Array.from(activeModal.querySelectorAll("a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])"))
+        .filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !activeModal.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !activeModal.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
     });
 
     const revealItems = document.querySelectorAll("[data-reveal]");
